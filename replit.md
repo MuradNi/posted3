@@ -18,11 +18,11 @@ This is a comprehensive Discord bot management platform built with a modern full
 ### Backend Architecture
 - **Runtime**: Node.js with TypeScript and ES modules
 - **Framework**: Express.js REST API server
-- **Database**: PostgreSQL with Neon Database (serverless)
-- **ORM**: Drizzle ORM for type-safe database operations
-- **External APIs**: Discord.js v14 for Discord bot integration
+- **Database**: JSON file storage (data.json) for simplified setup
+- **Storage**: Custom JsonStorage class implementing IStorage interface
+- **External APIs**: Discord.js v14 for Discord bot integration with user account tokens
 - **Task Scheduling**: Cron jobs for automated message posting
-- **Session Management**: PostgreSQL-based session storage with connect-pg-simple
+- **Session Management**: In-memory session storage
 
 ### Project Structure
 - **`/client`** - React frontend application with pages, components, and hooks
@@ -32,13 +32,14 @@ This is a comprehensive Discord bot management platform built with a modern full
 
 ## Key Components
 
-### Database Schema
-The application uses Drizzle ORM with the following core tables:
-- **discord_bots**: Bot configuration, status tracking, and server metadata
-- **auto_poster_configs**: Scheduled message posting configuration with cron expressions
-- **auto_responder_rules**: Message trigger patterns and automated responses
-- **activity_logs**: System activity tracking and error logging
-- **message_templates**: Reusable message templates for automation
+### Data Storage Schema
+The application uses JSON file storage with the following core data structures:
+- **discordBots**: Bot configuration, status tracking, and server metadata
+- **autoPosterConfigs**: Scheduled message posting configuration with cron expressions
+- **autoResponderRules**: Message trigger patterns and automated responses
+- **activityLogs**: System activity tracking and error logging
+- **messageTemplates**: Reusable message templates for automation
+- **nextIds**: Auto-incrementing ID counters for each data type
 
 ### Discord Integration Services
 - **DiscordBotManager**: Manages Discord client lifecycle, message processing, and bot status
@@ -84,18 +85,16 @@ The application is designed for deployment on Replit with the following approach
 ### Build Process
 1. **Frontend Build**: Vite compiles React app to `dist/public`
 2. **Backend Build**: esbuild bundles Express server to `dist/index.js`
-3. **Database**: Drizzle migrations run via `db:push` command
+3. **Data Storage**: JSON file (data.json) automatically created on first run
 
 ### Environment Configuration
-- **DATABASE_URL**: PostgreSQL connection string (Neon Database)
 - **NODE_ENV**: Environment mode (development/production)
-- **Discord Bot Tokens**: Stored per-bot in database (encrypted recommended)
+- **Discord User Tokens**: Stored per-bot in JSON file (main account tokens, not bot tokens)
 
 ### Scripts
 - `npm run dev`: Development mode with hot reloading
 - `npm run build`: Production build for both frontend and backend
 - `npm run start`: Production server startup
-- `npm run db:push`: Database schema synchronization
 
 ## Changelog
 
@@ -103,6 +102,8 @@ The application is designed for deployment on Replit with the following approach
 Changelog:
 - July 01, 2025. Initial setup and database configuration
 - July 01, 2025. Fixed Discord.js dependency and completed full application setup
+- July 01, 2025. Migrated from PostgreSQL database to JSON file storage for simplified setup
+- July 01, 2025. Updated to use Discord user account tokens instead of bot tokens
 ```
 
 ## User Preferences

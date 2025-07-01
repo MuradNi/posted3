@@ -81,16 +81,16 @@ export function AddBotModal({ open, onOpenChange }: AddBotModalProps) {
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="token" className="text-discord-text">Bot Token</Label>
+            <Label htmlFor="token" className="text-discord-text">User Account Token</Label>
             <Input
               id="token"
               type="password"
-              placeholder="Enter Discord bot token"
+              placeholder="Enter your main Discord account token"
               className="bg-discord-dark border-discord-dark focus:border-discord-blurple"
               {...form.register("token")}
             />
             <p className="text-xs text-discord-text-muted">
-              Get your token from Discord Developer Portal
+              Use your main Discord account token, not a bot token. Go to Discord web → Developer Tools → Network tab → Send a message → Look for Authorization header
             </p>
             {form.formState.errors.token && (
               <p className="text-xs text-discord-red">{form.formState.errors.token.message}</p>

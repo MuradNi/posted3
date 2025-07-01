@@ -1,0 +1,16 @@
+{
+  "users": [],
+  "discordBots": [],
+  "autoPosterConfigs": [],
+  "autoResponderRules": [],
+  "activityLogs": [],
+  "messageTemplates": [],
+  "nextIds": {
+    "users": 1,
+    "discordBots": 1,
+    "autoPosterConfigs": 1,
+    "autoResponderRules": 1,
+    "activityLogs": 1,
+    "messageTemplates": 1
+  }
+}
