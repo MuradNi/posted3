@@ -31,8 +31,7 @@ Platform manajemen bot Discord yang komprehensif dengan control center, auto-pos
 
 Pastikan kamu sudah menginstall:
 - Node.js 20 atau lebih baru
-- PostgreSQL database
-- Discord Bot Token (dari Discord Developer Portal)
+- Token akun Discord utama kamu (bukan bot token)
 
 ## ⚡ Quick Start
 
@@ -47,20 +46,9 @@ cd discord-bot-manager
 npm install
 ```
 
-### 2. Setup Database
+### 2. Jalankan Aplikasi
 
-```bash
-# Jalankan migrasi database
-npm run db:push
-```
-
-### 3. Konfigurasi Environment
-
-Environment variables sudah dikonfigurasi otomatis oleh Replit:
-- `DATABASE_URL` - URL koneksi PostgreSQL
-- `NODE_ENV` - Mode environment (development/production)
-
-### 4. Jalankan Aplikasi
+**Catatan**: Aplikasi menggunakan JSON file untuk storage (data.json), tidak perlu setup database.
 
 ```bash
 # Mode development (recommended)
@@ -75,13 +63,29 @@ Aplikasi akan berjalan di `http://localhost:5000`
 
 ## 🎯 Cara Penggunaan
 
-### 1. Mendapatkan Discord Bot Token
+### 1. Mendapatkan Token Discord User Account
 
-1. Buka [Discord Developer Portal](https://discord.com/developers/applications)
-2. Klik "New Application" dan beri nama bot
-3. Masuk ke tab "Bot" di sidebar kiri
-4. Klik "Reset Token" dan copy token yang muncul
-5. **Simpan token ini dengan aman!**
+**Penting**: Aplikasi ini menggunakan token akun Discord utama kamu, bukan bot token.
+
+#### Metode 1: Browser Developer Tools (Disarankan)
+1. **Buka Discord di Browser**
+   - Masuk ke [Discord Web](https://discord.com/app) dan login
+   - Buka Developer Tools (F12 atau klik kanan → Inspect)
+
+2. **Cari Token Kamu**
+   - Masuk ke tab Network di Developer Tools
+   - Kirim pesan apapun di Discord
+   - Cari request ke `discord.com/api/`
+   - Temukan Authorization header
+   - Copy token setelah "Authorization: " (copy semua setelah spasi)
+
+#### Metode 2: Console Method
+1. **Buka Console**
+   - Di Discord web, buka Developer Tools → tab Console
+   - Paste kode ini: `(webpackChunkdiscord_app.push([[''],{},e=>{m=[];for(let c in e.c)m.push(e.c[c])}]),m).find(m=>m?.exports?.default?.getToken!==void 0).exports.default.getToken()`
+   - Copy token yang muncul (tanpa tanda kutip)
+
+**⚠️ Peringatan Keamanan**: Jangan pernah bagikan token user kamu. Token ini memberikan akses penuh ke akun Discord kamu.
 
 ### 2. Mendapatkan Server ID
 
