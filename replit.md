@@ -101,7 +101,8 @@ The application is designed for deployment on Replit with the following approach
 
 ```
 Changelog:
-- July 01, 2025. Initial setup
+- July 01, 2025. Initial setup and database configuration
+- July 01, 2025. Fixed Discord.js dependency and completed full application setup
 ```
 
 ## User Preferences
